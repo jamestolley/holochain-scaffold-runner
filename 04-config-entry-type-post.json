@@ -1,0 +1,74 @@
+{
+  "entry_type_name": "post",
+  "first_field_name": "title",
+  "second_field_name": "content",
+  "commands": [{
+    "command": "xdotool search \"{windowtitle}\" windowactivate",
+    "timeout": 500,
+    "comment": "This makes the proper terminal window active"
+  },{
+    "command": "xdotool type \"hc scaffold entry-type\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "starts to scaffold the entry-type"
+  },{
+    "command": "xdotool type \"{entry_type_name}\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "sets the entry-type name (post)"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 1: choose String type"
+  },{
+    "command": "xdotool type \"{first_field_name}\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 1: type the first field name (title)"
+  },{
+    "command": "xdotool type \"y\"",
+    "timeout": 1000,
+    "comment": "FIELD 1: it should be visible in the UI"
+  },{
+    "command": "xdotool key Down && xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 1: TextField ui input type"
+  },{
+    "command": "xdotool type \"y\"",
+    "timeout": 1000,
+    "comment": "yes, more fields"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 2: choose String type"
+  },{
+    "command": "xdotool type \"{second_field_name}\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 2: type the second field name (content)"
+  },{
+    "command": "xdotool type \"y\"",
+    "timeout": 1000,
+    "comment": "FIELD 2: it should be visible in the UI"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 2: TextArea ui input type"
+  },{
+    "command": "xdotool type \"n\"",
+    "timeout": 1000,
+    "comment": "no more fields to enter"
+  },{
+    "command": "xdotool key Down",
+    "timeout": 1000,
+    "comment": "key down to select Delete"
+  },{
+    "command": "xdotool key space",
+    "timeout": 1000,
+    "comment": "press Space to deselect Delete"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "Enter to select the current options (Update only)"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "yes to recommended"
+  }]
+}

@@ -1,0 +1,28 @@
+{
+  "zome_name": "posts",
+  "commands": [{
+    "command": "xdotool search \"{windowtitle}\" windowactivate",
+    "timeout": 500,
+    "comment": "This makes the proper terminal window active"
+  },{
+    "command": "xdotool type \"hc scaffold zome\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "starts to scaffold the zome"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "says to create a coordinator and integrity zome pair"
+  },{
+    "command": "xdotool type \"{zome_name}\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "sets the zome name"
+  },{
+    "command": "xdotool type \"y\"",
+    "timeout": 1000,
+    "comment": "says to put the integrity zome in the default directory"
+  },{
+    "command": "xdotool type \"y\"",
+    "timeout": 1000,
+    "comment": "says to put the coordinator zome in the default directory"
+  }]
+}

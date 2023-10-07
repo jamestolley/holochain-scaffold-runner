@@ -1,0 +1,24 @@
+{
+  "collection_name": "all_posts",
+  "commands": [{
+    "command": "xdotool search \"{windowtitle}\" windowactivate",
+    "timeout": 500,
+    "comment": "This makes the proper terminal window active"
+  },{
+    "command": "xdotool type \"hc scaffold collection\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "starts to scaffold the collection"
+  },{
+    "command": "xdotool type \"{collection_name}\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "sets the collection name"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 1: choose Global"
+  },{
+    "command": "xdotool key Return",
+    "timeout": 1000,
+    "comment": "FIELD 1: choose Post"
+  }]
+}

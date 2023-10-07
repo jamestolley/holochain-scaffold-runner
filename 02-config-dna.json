@@ -1,0 +1,16 @@
+{
+  "dna_name": "forum",
+  "commands": [{
+    "command": "xdotool search \"{windowtitle}\" windowactivate",
+    "timeout": 500,
+    "comment": "This makes the proper terminal window active"
+  },{
+    "command": "xdotool type \"hc scaffold dna\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "scaffolds the dna"
+  },{
+    "command": "xdotool type \"{dna_name}\" && xdotool key Return",
+    "timeout": 1000,
+    "comment": "sets the dna name"
+  }]
+}
