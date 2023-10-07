@@ -13,7 +13,7 @@ Holochain scaffold runner is used to automate the Holochain scaffolding process.
 After installation, edit the configuration files as needed and then run
 
 ```bash
-> node src/index.js
+> node src/index.js --configfile [config-file.json] --windowtitle [hc scaffold terminal window title]
 ```
 
 ## Configuration files
