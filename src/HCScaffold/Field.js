@@ -94,7 +94,7 @@ class Field {
 
     let field = this.config;
 
-    let test = ["YES","Yes","yes","Y","y",true].includes(field.visible);
+    let test = ["YES","Yes","yes","Y","y",'on','On','ON',true].includes(field.visible);
 
     return this.create_yes_no_command(test, `field "${field.name}": set ui visibility`);
   }

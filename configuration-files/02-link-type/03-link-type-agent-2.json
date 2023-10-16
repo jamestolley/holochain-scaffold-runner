@@ -1,0 +1,9 @@
+{
+  "type": "link-type",
+  "from_entry_type": "Agent",
+  "from_agent_role": "creator",
+  "to_entry_type": "Agent",
+  "to_agent_role": "invitee",
+  "bidireccional": true,
+  "deletable": true
+}

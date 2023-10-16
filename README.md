@@ -62,6 +62,7 @@ The example configuration files, when run in order, will duplicate the my_forum_
 - Create tests for the other field types.
 - This has only been run with one dna and one zome. Make it work if there are more than one of either.
 - Improve the --debug mode to accommodate different debug levels
+- Fix tests, test for bad input
 
 ## Testing
 
@@ -85,7 +86,7 @@ To do that, run the configuration files in order and run this diff command on th
 created, and the reference output in the test/reference_output/my_forum_app directory.
 
 ```bash
-diff -Br --exclude=*node_modules* --exclude=*dna.yaml --exclude=*.git --exclude=*.holosr --targetdir=[the install directory for your holochain app] ./test/reference_outputs/my_forum_app
+diff -Br --exclude=*node_modules* --exclude=*dna.yaml --exclude=*.git --exclude=*.holosr --exclude=*.cargo --exclude=*Cargo.lock  [the root directory for your holochain app] ./test/reference_outputs/my_forum_app
 ```
 
 ## Requirements

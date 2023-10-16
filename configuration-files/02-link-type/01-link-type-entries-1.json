@@ -1,0 +1,9 @@
+{
+  "type": "link-type",
+  "from_entry_type": "Post",
+  "from_hash_type": "ActionHash",
+  "to_entry_type": "Comment",
+  "to_hash_type": "EntryHash",
+  "bidireccional": true,
+  "deletable": false
+}

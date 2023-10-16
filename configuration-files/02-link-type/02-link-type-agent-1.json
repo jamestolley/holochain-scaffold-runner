@@ -1,0 +1,9 @@
+{
+  "type": "link-type",
+  "from_entry_type": "Agent",
+  "from_agent_role": "creator",
+  "to_entry_type": "Post",
+  "to_hash_type": "ActionHash",
+  "bidireccional": true,
+  "deletable": true
+}

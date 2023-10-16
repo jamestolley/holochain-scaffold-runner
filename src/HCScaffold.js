@@ -197,6 +197,7 @@ class HCScaffold {
 
     switch (config.type) {
       case 'web_app':
+      case 'web-app':
         return this.create_commands_from_web_app_config(config, args, commands);
         break;
       case 'dna':
@@ -206,13 +207,14 @@ class HCScaffold {
         return this.create_commands_from_zome_config(config, args, commands);
         break;
       case 'entry_type':
+      case 'entry-type':
         return this.create_commands_from_entry_type_config(config, args, commands);
         break;
       case 'collection':
         return this.create_commands_from_collection_config(config, args, commands);
         break;
       case 'link_type':
-        throw new Error(`not yet implemented`);
+      case 'link-type':
         return this.create_commands_from_link_type_config(config, args, commands);
         break;
       default:
@@ -571,7 +573,129 @@ class HCScaffold {
   }
 
   create_commands_from_link_type_config(config, args, commands) {
-    throw new Error(`not yet implemented`);
+    let scaffold_command = {
+      "command": `xdotool type "hc scaffold link-type" && xdotool key Return`,
+      "timeout": 1000,
+      "comment": "start the link-type scaffolding tool"
+    };
+    commands.push(scaffold_command);
+
+    let key_down_counts = this.get_down_keystroke_counts("entry-type");
+    
+    // add "Agent" to the end of the list
+    key_down_counts.agent = Object.keys(key_down_counts).length;
+    let from_entry_type = config.from_entry_type.toLowerCase();
+    let from_key_count = -1;
+    if (from_entry_type in key_down_counts) {
+      from_key_count = key_down_counts[from_entry_type];
+    } else {
+      throw new Error(`link: failed to find from_entry_type "${from_entry_type}" in `, key_down_counts);
+    }
+
+    let down_key_command = `xdotool key Down && `;
+    let from_entry_type_command = {
+      "command": `${down_key_command.repeat(from_key_count)}xdotool key Return`,
+      "timeout": 1000,
+      "comment": "create link: choose the from entry-type"
+    };
+    commands.push(from_entry_type_command);
+
+    if (config.from_entry_type.toLowerCase() === "agent") {
+      let agent_role_command = {
+        "command": `xdotool type "${config.from_agent_role}" && xdotool key Return`,
+        "timeout": 1000,
+        "comment": "create link: choose agent role"
+      };
+      commands.push(agent_role_command);
+    } else {
+      if (!["ActionHash","EntryHash"].includes(config.from_hash_type)) {
+        throw new Error(`link: from_hash_type must be one of ["ActionHash","EntryHash"], not "${config.from_hash_type}"`);
+      }
+      let hash_down_count = config.from_hash_type === "ActionHash" ? 0 : 1;
+      let hash_type_command = {
+        "command": `${down_key_command.repeat(hash_down_count)}xdotool key Return`,
+        "timeout": 1000,
+        "comment": "create link: choose the from hash type"
+      };
+      commands.push(hash_type_command);
+    }
+
+    // add "Agent" to the end of the list
+    key_down_counts.none = Object.keys(key_down_counts).length;
+    let to_entry_type = config.to_entry_type.toLowerCase();
+    let to_key_count = -1;
+    if (to_entry_type in key_down_counts) {
+      to_key_count = key_down_counts[to_entry_type];
+    } else {
+      throw new Error(`link: failed to find to_entry_type "${to_entry_type}" in `, key_down_counts);
+    }
+
+    let to_entry_type_command = {
+      "command": `${down_key_command.repeat(to_key_count)}xdotool key Return`,
+      "timeout": 1000,
+      "comment": "create link: choose the to entry-type"
+    };
+    commands.push(to_entry_type_command);
+
+    if (config.to_entry_type !== "none") {
+      if (config.to_entry_type.toLowerCase() === "agent") {
+        let agent_role_command = {
+          "command": `xdotool type "${config.to_agent_role}" && xdotool key Return`,
+          "timeout": 1000,
+          "comment": "create link: choose agent role"
+        };
+        commands.push(agent_role_command);
+      } else {
+        if (!["ActionHash","EntryHash"].includes(config.to_hash_type)) {
+          throw new Error(`link: to_hash_type must be one of ["ActionHash","EntryHash"], not "${config.to_hash_type}"`);
+        }
+        let to_hash_down_count = config.to_hash_type === "ActionHash" ? 0 : 1;
+        let to_hash_type_command = {
+          "command": `${down_key_command.repeat(to_hash_down_count)}xdotool key Return`,
+          "timeout": 1000,
+          "comment": "create link: choose the to hash type"
+        };
+        commands.push(to_hash_type_command);
+      }
+
+      let test = ["YES","Yes","yes","Y","y",'on','On','ON',true].includes(config.bidireccional);
+      let answer = test ? "y" : "n";
+      let set_yes_no_command = {
+        "command": `xdotool type "${answer}"`,
+        "timeout": 1000,
+        "comment": "create link: set bidireccional"
+      };
+      commands.push(set_yes_no_command);
+    } else { // "none"
+      let none_entry_type_command = {
+        "command": `${down_key_command.repeat(key_down_counts.none)}xdotool key Return`,
+        "timeout": 1000,
+        "comment": "create link: choose none for to_entry_type"
+      };
+      commands.push(none_entry_type_command);
+
+      const pascal_case = /^[A-Z][A-Za-z]*$/;
+      if (!pascal_case.test(config.link_name)) {
+        throw new Error(`link_name "${config.link_name}" must be in Pascal Case but isn't`);
+      }
+      let link_name_command = {
+        "command": `xdotool type "${config.link_name}" && xdotool key Return`,
+        "timeout": 1000,
+        "comment": "create link: set the link name"
+      };
+      commands.push(link_name_command);
+    }
+
+    let test2 = ["YES","Yes","yes","Y","y",'on','On','ON',true].includes(config.deletable);
+    let answer2 = test2 ? "y" : "n";
+    let set_yes_no_command2 = {
+      "command": `xdotool type "${answer2}"`,
+      "timeout": 1000,
+      "comment": "create link: set deletable"
+    };
+    commands.push(set_yes_no_command2);
+
+    return commands;
   }
 
   // returns an object where the keys are the entry_types that already exist
