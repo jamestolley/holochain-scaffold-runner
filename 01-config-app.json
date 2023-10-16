@@ -1,5 +1,5 @@
 {
-  "app_name": "my_automated_forum_app",
+  "app_name": "my_automated_forum_app2",
   "commands": [{
     "command": "xdotool search \"{windowtitle}\" windowactivate",
     "timeout": 500,

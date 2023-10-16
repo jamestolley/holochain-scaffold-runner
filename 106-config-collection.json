@@ -1,0 +1,7 @@
+{
+  "type": "collection",
+  "name": "all_posts",
+  "collection_type": "global",
+  "#collection_type": "or can be: agent",
+  "entry_type": "Post"
+}

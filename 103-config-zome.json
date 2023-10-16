@@ -1,0 +1,5 @@
+{
+  "type": "zome",
+  "#what to create": "always create a pair and put them in the current directory",
+  "name": "posts"
+}

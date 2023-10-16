@@ -1,0 +1,17 @@
+{
+  "type": "entry_type",
+  "name": "post",
+  "fields": [{
+    "type": "String",
+    "name": "title",
+    "visible": true,
+    "widget": "TextField"
+  },{
+    "type": "String",
+    "name": "content",
+    "visible": true,
+    "widget": "TextArea"
+  }],
+  "crud": ["Update"],
+  "#create link": "always yes"
+}

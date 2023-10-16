@@ -1,0 +1,20 @@
+{
+  "type": "entry_type",
+  "name": "comment",
+  "fields": [{
+    "type": "String",
+    "name": "comment_content",
+    "visible": "y",
+    "widget": "Textarea"
+  },{
+    "type": "ActionHash",
+    "name": "post_hash",
+    "#link": "a link should always be created",
+    "entry_type": "Post",
+    "#default field name": "always choose the default",
+    "visible": "n",
+    "#widget": "no widget for invisible items"
+  }],
+  "crud": ["Delete"],
+  "#create link": "always yes"
+}
