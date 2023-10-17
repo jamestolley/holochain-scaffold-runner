@@ -16,5 +16,5 @@
     "#widget": "no widget for invisible items"
   }],
   "crud": ["Delete"],
-  "#create link": "always yes"
+  "create_update_link": false
 }

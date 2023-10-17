@@ -1,7 +1,7 @@
 const { readFileSync, existsSync, writeFileSync } = require('fs');
 const { exec } = require('node:child_process');
 
-const { Field } = require('./HCScaffold/Field.js');
+// const { Field } = require('./HCScaffold/Field.js');
 const { StringField } = require('./HCScaffold/Field/StringField.js');
 const { BoolField } = require('./HCScaffold/Field/BoolField.js');
 const { U32Field } = require('./HCScaffold/Field/U32Field.js');
@@ -397,10 +397,19 @@ class HCScaffold {
       };
       commands.push(confirm_crud_both_command);
 
+      let create_update_link = ["YES","Yes","yes","Y","y",'on','On','ON',true].includes(config.create_update_link);
+      if (!create_update_link) {
+        let confirm_recommended_command = {
+          "command": "xdotool key Down",
+          "timeout": 1000,
+          "comment": "choose to not create a link on update"
+        };
+        commands.push(confirm_recommended_command);
+      }
       let confirm_recommended_command = {
         "command": "xdotool key Return",
         "timeout": 1000,
-        "comment": "yes to recommended link creation"
+        "comment": "confirm whether to creat a link on update"
       };
       commands.push(confirm_recommended_command);
 
@@ -413,10 +422,19 @@ class HCScaffold {
       };
       commands.push(confirm_crud_update_command);
 
+      let create_update_link = ["YES","Yes","yes","Y","y",'on','On','ON',true].includes(config.create_update_link);
+      if (!create_update_link) {
+        let confirm_recommended_command = {
+          "command": "xdotool key Down",
+          "timeout": 1000,
+          "comment": "choose to not create a link on update"
+        };
+        commands.push(confirm_recommended_command);
+      }
       let confirm_recommended_command = {
         "command": "xdotool key Return",
         "timeout": 1000,
-        "comment": "yes to recommended link creation"
+        "comment": "confirm whether to creat a link on update"
       };
       commands.push(confirm_recommended_command);
 
