@@ -1,0 +1,19 @@
+{
+  "type": "entry_type",
+  "name": "enum_entry_type",
+  "fields": [{
+    "type": "Enum",
+    "enum_name": "EnumFieldName",
+    "name": "enum_fieldname",
+    "variants": [{
+      "name": "VariantOne"
+    },{
+      "name": "VariantTwo"
+    },{
+      "name": "VariantThree"
+    }],
+    "visible": "y"
+  }],
+  "crud": ["Update","Delete"],
+  "create_update_link": "yes"
+}

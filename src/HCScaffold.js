@@ -386,7 +386,7 @@ class HCScaffold {
     
     // configure the fields
     commands = this.create_commands_from_fields_config(config, args, commands);
-
+    console.log(44);
     // crud
     if (config.crud.includes("Update") && config.crud.includes("Delete")) {
 
@@ -510,10 +510,10 @@ class HCScaffold {
         case 'enum':
           field_object = new EnumField(field);
           break;
-        case 'optionof':
+        case 'optionof...':
           field_object = new OptionOfField(field);
           break;
-        case 'vectorof':
+        case 'vectorof...':
           field_object = new VectorOfField(field);
           break;
         default:

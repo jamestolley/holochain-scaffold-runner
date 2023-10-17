@@ -33,19 +33,19 @@ class Field {
     // for each data type, downs gives the number of down arrows to press.
     // // the other keys, for the available ui widget types, give the down arrows for those.
     let repeats_for_type = {
-      "String":       { "downs": 0, "TextArea": 0, "TextField": 1 },
-      "bool":         { "downs": 1 }, // Checkbox
-      "u32":          { "downs": 2 }, // Slider
-      "i32":          { "downs": 3 }, // Slider
-      "f32":          { "downs": 4 }, // Slider
-      "Timestamp":    { "downs": 5 }, // DateTimePicker
-      "ActionHash":   { "downs": 6 }, // 
-      "EntryHash":    { "downs": 7 }, // 
-      "DnaHash":      { "downs": 8 }, // 
-      "AgentPubKey":  { "downs": 9 }, // 
-      "Enum":         { "downs": 10 }, // 
-      "Option of...": { "downs": 11 }, // String .. Enum
-      "Vector of...": { "downs": 12 }, //  String .. Enum
+      "String":      { "downs": 0, "TextArea": 0, "TextField": 1 },
+      "bool":        { "downs": 1 }, // Checkbox
+      "u32":         { "downs": 2 }, // Slider
+      "i32":         { "downs": 3 }, // Slider
+      "f32":         { "downs": 4 }, // Slider
+      "Timestamp":   { "downs": 5 }, // DateTimePicker
+      "ActionHash":  { "downs": 6 }, // 
+      "EntryHash":   { "downs": 7 }, // 
+      "DnaHash":     { "downs": 8 }, // 
+      "AgentPubKey": { "downs": 9 }, // 
+      "Enum":        { "downs": 10 }, // 
+      "OptionOf...": { "downs": 11 }, // String .. Enum
+      "VectorOf...": { "downs": 12 }, //  String .. Enum
     };
 
     let valid_types = Object.keys(repeats_for_type);

@@ -1,6 +1,6 @@
 {
   "type": "entry_type",
-  "name": "example",
+  "name": "vector_string",
   "fields": [{
     "type": "VectorOf...",
     "of_type": {

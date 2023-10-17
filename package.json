@@ -1,6 +1,6 @@
 {
   "name": "holochain-scaffold-runner",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Automate the holochain scaffolding cli from a configuration file.",
   "main": "src/index.js",
   "scripts": {

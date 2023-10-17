@@ -22,7 +22,8 @@ class EnumField extends Field {
     this.create_field_name_command(field.enum_name, this_comment); // must be Enum (Pascal) case
 
     // go through the variants
-    for (let i = 0; i < variants.length; i++) {
+    for (let i = 0; i < field.variants.length; i++) {
+      let variant = field.variants[i];
       let comment = `field "${field.name}": set enum variant name to "${variant.name}"`;
 
       if (!pascal_case.test(variant.name)) {
@@ -30,14 +31,16 @@ class EnumField extends Field {
       }
       this.create_field_name_command(variant.name, comment);
 
-      let test = i < variants.length - 1;
+      let test = i < field.variants.length - 1;
       let yes_no_comment = `field "${field.name}": ` + (test ? "yes" : "no") + " more fields";
       this.create_yes_no_command(test, yes_no_comment);
     }
 
     this.create_field_name_command();
-    this.create_ui_visibility_command();
-    this.create_return_command(`field "${field.name}": use Select as widget type`);
+    let is_visible = this.create_ui_visibility_command();
+    if (is_visible) {
+      this.create_return_command(`field "${field.name}": use Select as widget type`);
+    }
 
     return this.commands;
   }

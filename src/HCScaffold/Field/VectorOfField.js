@@ -1,7 +1,7 @@
 
 const { Field } = require("../Field.js");
-const { EnumField } = require('./HCScaffold/Field/EnumField.js');
-const { StringField } = require('./HCScaffold/Field/StringField.js');
+const { EnumField } = require('./EnumField.js');
+const { StringField } = require('./StringField.js');
 
 // Class for creating the command arrays for fields of type VectorOf
 
@@ -39,11 +39,11 @@ class VectorOfField extends Field {
     }
     */
     if (field.of_type.type === "Enum") {
-      let field = EnumField(field.of_type);
-      this.commands.push(...field.get_commands(down_keystroke_counts));
+      let enum_field = new EnumField(field.of_type);
+      this.commands.push(...enum_field.get_commands(down_keystroke_counts));
     } else if (field.of_type.type === "String") {
-      let field = StringField(field.of_type);
-      this.commands.push(...field.get_commands());
+      let string_field = new StringField(field.of_type);
+      this.commands.push(...string_field.get_commands());
     } else { // all other types have only one widget type, so key Return
       this.create_return_command(`field "${field.name}": accept default widget`);
     }
