@@ -56,13 +56,14 @@ The example configuration files, when run in order, will duplicate the my_forum_
 
 - Command line option to log the executed commands.
 - Add configuration files for the link-type sub-command.
-- Code the field types "OptionOf..." and "VectorOf..."; they are currently incomplete.
 - Run the prompts in an internal process.
-- Run all files in a directory sequentially.
-- Create tests for the other field types.
-- This has only been run with one dna and one zome. Make it work if there are more than one of either.
-- Improve the --debug mode to accommodate different debug levels
-- Fix tests, test for bad input
+- Run all files in a directory, instead of just one file per execution.
+- Create tests for all types.
+- Allow for more than one dna and more than one zome.
+- Improve the --debug mode to accommodate different debug levels.
+- Fix tests, test for bad input.
+- Better input checking.
+- Read the valid field widget types from the current template (instead of defaulting to the default templates).
 
 ## Testing
 

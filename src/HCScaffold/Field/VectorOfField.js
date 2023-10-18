@@ -19,25 +19,6 @@ class VectorOfField extends Field {
     let comment = `field "${field.name}": set vector to be of type "${field.of_type.type}"`;
     this.create_data_type_command(field.of_type.type, comment);
 
-    /*
-    example configration file:
-    {
-      "type": "entry_type",
-      "name": "example",
-      "fields": [{
-        "type": "VectorOf...",
-        "of_type": { // the same as the field on its own
-          "type": "String",
-          "name": "comment_content",
-          "visible": true,
-          "widget": "Textarea"
-        },
-        "visible": "y"
-      }],
-      "crud": ["Delete"],
-      "#create link": "always yes"
-    }
-    */
     if (field.of_type.type === "Enum") {
       let enum_field = new EnumField(field.of_type);
       this.commands.push(...enum_field.get_commands(down_keystroke_counts));

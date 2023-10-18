@@ -478,7 +478,6 @@ class HCScaffold {
       switch (field.type.toLowerCase()) {
         case 'string':
           field_object = new StringField(field);
-          // this.debug("creating a widget", field, widget);
           break;
         case 'bool':
           field_object = new BoolField(field);

@@ -2,14 +2,19 @@
   "type": "entry_type",
   "name": "vector_string",
   "fields": [{
-    "type": "VectorOf...",
+    "type": "OptionOf...",
     "of_type": {
       "type": "String",
-      "name": "comment_content",
+      "name": "option_strs",
       "visible": true,
       "widget": "Textarea"
     },
     "visible": "y"
+  },{
+      "type": "String",
+      "name": "option_strq",
+      "visible": true,
+      "widget": "Textarea"
   }],
   "crud": ["Delete"],
   "create_update_link": "yes"

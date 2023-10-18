@@ -18,6 +18,6 @@
     },
     "visible": "y"
   }],
-  "crud": ["Delete"],
-  "create_update_link": "no"
+  "crud": ["Update","Delete"],
+  "create_update_link": "n"
 }
