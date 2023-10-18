@@ -2,5 +2,5 @@
   "type": "web_app",
   "name": "my_forum_app",
   "ui": "Svelte",
-  "#setup dev environment": "always true"
+  "setup_dev_environment": true
 }

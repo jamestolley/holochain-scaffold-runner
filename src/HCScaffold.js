@@ -260,10 +260,21 @@ class HCScaffold {
     commands.push(select_ui_command);
 
     // dev environment - always yes
+    let dev_test = !["YES","Yes","yes","Y","y",'on','On','ON',true].includes(config.setup_dev_environment);
+    if (dev_test) {
+      let no_to_setup_dev_command = {
+        "command": "xdotool key Down", 
+        "timeout": 2000,
+        "comment": "choose no to setting up the dev environment"
+      };
+      commands.push(no_to_setup_dev_command);
+    }
+
+    // dev environment - always yes
     let setup_the_dev_env_command = {
       "command": "xdotool key Return", 
       "timeout": 2000,
-      "comment": "set up the dev environment? (Y) and finish"
+      "comment": "confirm setting up the dev environment"
     };
     commands.push(setup_the_dev_env_command);
 
