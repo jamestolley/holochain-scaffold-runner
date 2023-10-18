@@ -338,10 +338,16 @@ class HCScaffold {
     };
     commands.push(run_scaffold_command);
     
+    let down_key_command = "xdotool key Down && ";
+    let down_key_counts = { "pair": 0, "integrity": 1, "coordinator": 2 };
+    if (typeof down_key_counts[config.create] === "undefined") {
+      throw new Error(``);
+    }
+    let repeats = down_key_counts[config.create];
     let create_pair_command = {
-      "command": "xdotool key Return",
+      "command": `${down_key_command.repeat(repeats)}xdotool key Return`,
       "timeout": 1000,
-      "comment": "says to create a coordinator and integrity zome pair"
+      "comment": "create a pair of zomes or only one kind"
     };
     commands.push(create_pair_command);
     
@@ -355,17 +361,20 @@ class HCScaffold {
     };
     commands.push(set_zome_name_command);
     
-    let set_zome_directory_command = {
-      "command": `xdotool type "y"`,
-      "timeout": 1000,
-      "comment": "says to put the integrity zome in the default directory"
-    };
-    commands.push(set_zome_directory_command);
+    // TODO make it possible to save the zomes in specified directories
+    if (config.create === "pair") {
+      let set_zome_directory_command = {
+        "command": `xdotool type "y"`,
+        "timeout": 1000,
+        "comment": "put the zome/s in the default directory"
+      };
+      commands.push(set_zome_directory_command);
+    }
     
     let set_directory_command = {
       "command": `xdotool type "y"`,
       "timeout": 1000,
-      "comment": "says to put the coordinator zome in the default directory"
+      "comment": "put the zome/s in the default directory"
     };
     commands.push(set_directory_command);
 
